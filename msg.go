@@ -16,6 +16,9 @@ var (
 // echo "$(date +"%Y-%m-%d %H:%M:%S") $(hostname) $(basename $0)[$$]: $@"
 // FIXME: this is all inefficient, unclean and needs fixing later especially as done on each call.
 func Info(format string, a ...interface{}) {
+	if Testing {
+		return
+	}
 	myhostname, _ := os.Hostname()
 	_, myname := path.Split(os.Args[0])
 
